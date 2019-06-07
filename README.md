@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.com/seth-ellison/metrics-app.svg?token=YZeWxGsRxyshtrfzLncA&branch=master)](https://travis-ci.com/seth-ellison/metrics-app)
