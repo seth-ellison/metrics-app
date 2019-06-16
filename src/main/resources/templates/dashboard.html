@@ -1,7 +1,79 @@
 <html>
-	<head></head>
-	<body>
-		<h1>Index Page</h1>
-		<p th:text="${message}"></p>
+	<head>
+		<script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+				integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+				crossorigin="anonymous"></script>
+		
+			  
+		<script src="/js/dashboard.js"></script>
+	</head>
+	<body class="container">
+		<h1 style="color: #88cc88">Request Metrics Overview</h1>
+		<table class="table">
+			<tr>
+				<th>Minimum Request Time</th>
+				<th>Maximum Request Time</th>
+				<th>Average Request Time</th>
+			</tr>
+			<tr>
+				<td>{{request.min}}ms</td>
+				<td>{{request.max}}ms</td>
+				<td>{{request.avg}}ms</td>
+			</tr>
+		</table>
+		
+		<h1 style="color: #8888cc">Response Metrics Overview</h1>
+		<table class="table">
+			<tr>
+				<th>Minimum Response Size</th>
+				<th>Maximum Response Size</th>
+				<th>Average Response Size</th>
+			</tr>
+			<tr>
+				<td>{{response.min}} bytes</td>
+				<td>{{response.max}} bytes</td>
+				<td>{{response.avg}} bytes</td>
+			</tr>
+		</table>
+		
+		<h1 style="color: #cc8888">Sample Metric Data</h1>
+		<table class="table">
+			<tr>
+				<th>UUID</th>
+				<th>URL</th>
+				<th>Size</th>
+			</tr>
+			{{#samples}}
+			<tr>
+				<td>{{requestUuid}}</td>
+				<td><a href="{{url}}">{{url}}</a></td>
+				<td>{{responseSize}} bytes</td>
+			</tr>
+			{{/samples}}
+		</table>
+		
+		<form id="stat-search" class="col-md-5">
+			<h1 style="color: #88cc88">Request Lookup (by UUID)</h1>
+			<input class="form-control" id="uuid" type="text"></input>
+			<button type="submit" class="form-control btn-primary btn">Search</button>
+			<h3 id="error"></h3>
+		</form>
+		
+		<div class="col-md-7">
+			<h1 style="color: #8888cc">Queried Metric Data</h1>
+			<table id="results" class="table">
+				<tr>
+					<th>UUID</th>
+					<th>URL</th>
+					<th>Size</th>
+				</tr>
+			</table>
+		</div>
+		
 	</body>
 </html>
