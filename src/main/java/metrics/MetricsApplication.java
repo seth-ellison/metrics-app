@@ -14,9 +14,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-public class MetricsAppApplication {
+public class MetricsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MetricsAppApplication.class, args);
+		SpringApplication.run(MetricsApplication.class, args);
 	}
 }
